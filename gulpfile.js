@@ -54,10 +54,7 @@ function templates() {
 gulp.task('dist', ['clean'], function() {
 
   return es.merge(
-      gulp.src([
-        './src/main/javascript/**/*.js',
-        './node_modules/swagger-client/browser/swagger-client.js'
-      ]),
+      gulp.src(['./src/main/javascript/**/*.js']),
       templates()
     )
     .pipe(order(['scripts.js', 'templates.js']))
@@ -124,6 +121,7 @@ gulp.task('watch', function() {
 gulp.task('connect', function() {
   connect.server({
     root: 'dist',
+    port: 8099,
     livereload: true
   });
 });
